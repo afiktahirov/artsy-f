@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  min-width: 320px;
+}
+
+body {
+  font-family: "SFProDisplay-Light", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  letter-spacing: .2px;
+  color: $color-text-primary;
+  overflow-x: hidden !important;
+
+  .el-popup-parent {
+    &--hidden {
+      overflow: hidden !important;
+    }
+  }
+}
+
+a, a:hover, a:focus {
+  outline: none;
+  color: $color-text-primary;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+img[src=""],
+img:not([src]){
+  opacity: 0;
+}
+
+main.content {
+  min-height: 80vh;
+  padding-top: 124.5px;
+  overflow-x: hidden !important;
+}
+
+.container {
+  max-width: 1210px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-flex;
+  }
+}
+
+// -- hide input[type='number'] arrows
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// -- swiper slider
+.slider-container {
+  .swiper {
+    width: calc(100% + 30px);
+    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.swiper {
+  &:not(.swiper-initialized) {
+    .swiper-slide:not(:first-child) {
+      display: none;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-pagination {
+      visibility: hidden;
+    }
+  }
+}
+
+// -- star rating
+.vue-star-rating {
+  &-star {
+    display: inline-flex !important;
+    margin-right: 1px !important;
+  }
+
+  &-rating-text {
+    font-family: SFProDisplay-Medium, sans-serif;
+    line-height: 1;
+    color: $color-primary;
+    transform: translateY(1px);
+
+    &--big {
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+    }
+  }
+}
+
+@media (min-width: $screen-xl) {
+  main.content {
+    padding-top: 128.5px;
+  }
+}

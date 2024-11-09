@@ -1,0 +1,169 @@
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+/* Colors */
+$--color-white: #FFFFFF !default;
+$--color-black: #000000 !default;
+$--color-text-primary: #000000 !default;
+$--color-text-regular: #606266 !default;
+$--color-text-secondary: #7A8792 !default;
+$--color-text-placeholder: #BCC4CA !default;
+
+$--color-primary: #77BDCA !default;
+$--color-success: #67C23A !default;
+$--color-warning: #FAECD5 !default;
+$--color-danger: #EF4648 !default;
+$--color-info: #000000 !default;
+
+/* Alert */
+$--alert-padding: 8px 16px !default;
+
+/* Button */
+$--button-padding-vertical: 20px !default;
+$--button-medium-padding-vertical: 16px !default;
+$--button-small-padding-vertical: 12px !default;
+$--button-small-font-size: 12px !default;
+
+/* Badge */
+$--badge-background-color: $--color-danger !default;
+$--badge-radius: 50% !default;
+$--badge-font-size: 10px !default;
+$--badge-padding: 0 !default;
+$--badge-size: 16px !default;
+
+/* Checkbox */
+$--checkbox-font-color: $--color-text-primary !default;
+$--checkbox-input-height: 17px !default;
+$--checkbox-input-width: 17px !default;
+$--checkbox-border-radius: 2px !default;
+$--checkbox-background-color: $border-color !default;
+$--checkbox-input-border: $border-color !default;
+
+$--checkbox-checked-font-color: $--color-text-primary !default;
+$--checkbox-checked-input-border-color: $border-color !default;
+$--checkbox-checked-background-color: $--color-black !default;
+$--checkbox-checked-icon-color: $--color-white !default;
+
+/* Radio
+-------------------------- */
+$--radio-font-color: $--color-text-primary !default;
+$--radio-input-height: 16px !default;
+$--radio-input-width: 16px !default;
+$--radio-input-border-radius: 2px !default;
+$--radio-input-background-color: $border-color !default;
+$--radio-input-border: none !default;
+$--radio-icon-color: $--color-black !default;
+
+$--radio-checked-font-color: $--color-text-primary !default;
+$--radio-checked-input-background-color: $--color-white !default;
+$--radio-checked-icon-color: $border-color !default;
+
+/* Collapse */
+$--collapse-border-color: "transparent" !default;
+$--collapse-header-height: auto !default;
+$--collapse-header-font-size: 16px !default;
+$--collapse-content-font-size: 14px !default;
+
+/* Dialog */
+$--dialog-box-shadow: "none" !default;
+
+/* Input */
+$--input-height: 56px !default;
+$--input-border-color: $border-color !default;
+//$--input-border-color-hover: $--border-color-hover !default;
+$--input-max-width: 100% !default;
+$--input-focus-border: $--color-text-regular !default;
+//$--input-disabled-color: $--disabled-color-base !default;
+//$--input-disabled-placeholder-color: $--color-text-placeholder !default;
+
+$--input-medium-font-size: 14px !default;
+$--input-medium-height: 48px !default;
+$--input-small-font-size: 13px !default;
+$--input-small-height: 40px !default;
+
+/* Notification */
+$--notification-group-margin-left: 0 !default;
+$--notification-border-color: transparent !default;
+$--notification-title-color: $--color-white !default;
+$--notification-content-color: $--color-white !default;
+$--notification-close-color: $--color-white !default;
+$--notification-close-hover-color: $--color-white !default;
+$--notification-close-font-size: spacing(5) !default;
+$--notification-padding: spacing(3) spacing(7) spacing(3) spacing(4) !default;
+
+/* Pagination */
+$--pagination-font-size: 12px !default;
+$--pagination-border-radius: 4px !default;
+$--pagination-button-width: 32px !default;
+$--pagination-button-height: 32px !default;
+$--pagination-hover-color: $--color-text-primary !default;
+
+/* Tooltip  */
+$--tooltip-fill: #FAECD5 !default;
+$--tooltip-color: $--color-black !default;
+$--tooltip-border-color: #FAECD5 !default;
+$--tooltip-padding: 8px !default;
+
+/* Table */
+$--table-border-color: transparent !default;
+$--table-border: none !default;
+$--table-header-background-color: #f9f9f9 !default;
+
+/* Tag */
+$--tag-font-size: 10px !default;
+$--tag-border-radius: 4px !default;
+$--tag-padding: 4px 6px !default;
+
+/* Slider */
+$--slider-main-background-color: $--color-black !default;
+$--slider-runway-background-color: $border-color !default;
+$--slider-stop-background-color: $--color-white !default;
+$--slider-margin: 6px 0 !default;
+$--slider-border-radius: 2px !default;
+$--slider-height: 2px !default;
+$--slider-button-size: 16px !default;
+$--slider-button-wrapper-size: 20px !default;
+$--slider-button-wrapper-offset: -9px !default;
+
+/* Switch */
+$--switch-on-color: $border-color !default;
+$--switch-off-color: $border-color !default;
+//$--switch-font-size: $--font-size-base !default;
+$--switch-core-border-radius: 32px !default;
+
+/* Rate */
+$--rate-icon-margin: 0 !default;
+
+/* Empty */
+$--empty-padding: 0 0 40px 0 !default;
+//$--empty-description-margin-top: 20px !default;
+
+/* Breakpoints */
+$--sm: 575px !default;
+$--md: 767px !default;
+$--lg: 991px !default;
+$--xl: 1200px !default;
+
+$--breakpoints: (
+  'xs' : (max-width: $--sm - 1),
+  'sm' : (min-width: $--sm),
+  'md' : (min-width: $--md),
+  'lg' : (min-width: $--lg),
+  'xl' : (min-width: $--xl)
+);
+
+$--breakpoints-spec: (
+  'xs-only' : (max-width: $--sm - 1),
+  'sm-and-up' : (min-width: $--sm),
+  'sm-only': "(min-width: #{$--sm}) and (max-width: #{$--md - 1})",
+  'sm-and-down': (max-width: $--md - 1),
+  'md-and-up' : (min-width: $--md),
+  'md-only': "(min-width: #{$--md}) and (max-width: #{$--lg - 1})",
+  'md-and-down': (max-width: $--lg - 1),
+  'lg-and-up' : (min-width: $--lg),
+  'lg-only': "(min-width: #{$--lg}) and (max-width: #{$--xl - 1})",
+  'lg-and-down': (max-width: $--xl - 1),
+  'xl-only' : (min-width: $--xl),
+);
+
+@import '~element-ui/packages/theme-chalk/src/index';

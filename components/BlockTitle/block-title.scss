@@ -1,0 +1,17 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.block-title {
+  font-family: SFProDisplay-SemiBold, sans-serif;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  margin-bottom: spacing(6);
+}
+
+@media (min-width: $screen-md) {
+  .block-title {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    margin-bottom: spacing(8);
+  }
+}

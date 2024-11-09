@@ -1,0 +1,21 @@
+.el-form {
+  &-item {
+    margin-bottom: spacing(4);
+
+    &__label {
+      font-family: SFProDisplay-Regular, sans-serif;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: $color-text-primary;
+      padding-bottom: spacing(2) !important;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &__error {
+      position: static;
+    }
+  }
+}

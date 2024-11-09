@@ -1,0 +1,9 @@
+.el-select {
+  width: 100%;
+
+  &-dropdown {
+    &__list {
+      flex-direction: column;
+    }
+  }
+}

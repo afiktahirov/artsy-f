@@ -1,0 +1,149 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.product-details {
+  .el-divider {
+    margin: spacing(5) 0;
+  }
+
+  &__params {
+    position: relative;
+    flex-wrap: nowrap;
+  }
+
+  &__param {
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      margin-right: spacing(8);
+    }
+
+    svg {
+      margin-right: spacing(2);
+    }
+  }
+
+  &__title {
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin-top: spacing(-1);
+  }
+
+  &__rating {
+    margin: spacing(2) 0 spacing(3) 0;
+
+    &-count {
+      font-size: 1.2rem;
+      color: $color-text-secondary;
+      margin: 0 spacing(1);
+      transform: translateY(1px);
+    }
+  }
+
+  &__description {
+    line-height: 2rem;
+    color: $color-text-secondary;
+    margin-bottom: spacing(3);
+  }
+
+  &__price {
+    .current {
+      font-size: 2.6rem;
+      line-height: 3.2rem;
+      margin-right: spacing(3);
+    }
+
+    .old {
+      font-size: 1.6rem;
+      color: $color-text-placeholder;
+      text-decoration: line-through;
+    }
+  }
+
+  &__tag {
+    display: inline-block;
+    font-family: SFProDisplay-Medium, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: spacing(1) spacing(3);
+    background-color: #FAECD5;
+    border-radius: spacing(1);
+    margin-top: spacing(2);
+  }
+
+  &__actions {
+    &-item {
+      font-size: 12px;
+      padding: 10px spacing(5) 10px spacing(4);
+      border: 1px solid #d9d9d9;
+      border-radius: spacing(8);
+      transition: .2s ease;
+
+      img {
+        width: spacing(6);
+        margin-right: spacing(1);
+      }
+
+      + * {
+        margin-left: spacing(3);
+      }
+    }
+  }
+
+  .seller-phone {
+    margin: 0 spacing(6) spacing(4) 0;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .product-details {
+    &__title {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+    }
+
+    &__price {
+      .current {
+        font-size: 3.2rem;
+        line-height: 3.8rem;
+      }
+
+      .old {
+        font-size: 2rem;
+      }
+    }
+
+    &__description {
+      margin-bottom: spacing(4);
+    }
+
+    .seller-phone {
+      margin: 0 spacing(12) spacing(4) 0;
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .product-details {
+    &__description {
+      max-width: 430px;
+    }
+  }
+}
+
+@media (min-width: $screen-xl) {
+  .product-details {
+    padding: 0 0 0 spacing(10);
+
+    &__param {
+      &:not(:last-child) {
+        margin-right: spacing(10);
+      }
+    }
+
+    .el-divider {
+      margin: spacing(6) 0;
+    }
+  }
+}

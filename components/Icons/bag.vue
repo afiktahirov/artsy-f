@@ -1,0 +1,14 @@
+<template>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.9502 8.1036V7.23064C7.9502 5.20574 9.57912 3.21683 11.604 3.02784C14.0159 2.79385 16.0498 4.69276 16.0498 7.05965V8.30159" stroke="black" stroke-width="1.6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.30012 20.9998H14.6999C18.3177 20.9998 18.9657 19.5509 19.1547 17.787L19.8296 12.3872C20.0726 10.1913 19.4426 8.40039 15.5998 8.40039H8.40016C4.55734 8.40039 3.92737 10.1913 4.17035 12.3872L4.84532 17.787C5.03431 19.5509 5.68228 20.9998 9.30012 20.9998Z" stroke="black" stroke-width="1.6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.1458 13.0003H15.1539" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.84518 13.0003H8.85327" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: "bag"
+}
+</script>

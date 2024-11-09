@@ -1,0 +1,16 @@
+.el-divider {
+  margin: spacing(7) 0;
+
+  &--horizontal {
+    background-color: transparent;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__text {
+    color: $color-text-secondary;
+    padding: 0 spacing(4);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,31 @@
+.el-dropdown {
+  &-menu {
+    display: block;
+    padding: spacing(2);
+
+    &__item {
+      display: list-item;
+      padding: 0 spacing(3);
+      color: $color-text-primary;
+      border-radius: spacing(1);
+
+      &:not(.is-disabled) {
+        &:hover {
+          background-color: #FAECD5;
+          color: $color-text-primary;
+        }
+      }
+
+      > * {
+        display: flex;
+        align-items: center;
+        color: inherit;
+      }
+
+      svg {
+        max-width: spacing(5);
+        margin-right: spacing(3);
+      }
+    }
+  }
+}

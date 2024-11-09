@@ -1,0 +1,23 @@
+@import "assets/styles/utils";
+
+.add-review-form {
+  .el-form {
+    &-item {
+      margin-bottom: spacing(7);
+    }
+  }
+
+  .image-uploader {
+    &__title {
+      font-family: SFProDisplay-Regular, sans-serif;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      margin-bottom: spacing(6);
+    }
+  }
+}

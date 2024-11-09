@@ -1,0 +1,225 @@
+@import "variables";
+
+$indents: 10;
+
+$breakpoints: (
+  "": "",
+  "sm": $screen-sm,
+  "md": $screen-md,
+  "lg": $screen-lg,
+  "xl": $screen-xl
+);
+
+$sides: (
+  "": "",
+  "t": "top",
+  "r": "right",
+  "b": "bottom",
+  "l": "left"
+);
+
+/** Spacing utilities */
+@for $indent from 0 through $indents {
+  .px-#{$indent} {
+    padding-left: spacing($indent) !important;
+    padding-right: spacing($indent) !important;
+  }
+
+  .py-#{$indent} {
+    padding-top: spacing($indent) !important;
+    padding-bottom: spacing($indent) !important;
+  }
+}
+
+@each $breakName, $breakValue in $breakpoints {
+  @each $sideName, $sideValue in $sides {
+    @for $indent from 0 through $indents {
+      $selector: "";
+      $property: if($sideName == "", "", -#{$sideValue});
+
+      @if $breakName == "" {
+        $selector: #{$sideName}-#{$indent};
+      } @else {
+        $selector: #{$sideName}-#{$breakName}-#{$indent};
+      }
+
+      @if $breakName == "" {
+        .p#{$selector} {
+          padding#{$property}: spacing($indent) !important;
+        }
+
+        .m#{$selector} {
+          margin#{$property}: spacing($indent) !important;
+        }
+      } @else {
+        @media (min-width: $breakValue) {
+          .p#{$selector} {
+            padding#{$property}: spacing($indent) !important;
+          }
+
+          .m#{$selector} {
+            margin#{$property}: spacing($indent) !important;
+          }
+        }
+      }
+
+    } // indents
+  } // sides
+} // breakpoints
+
+/* Displays */
+$displays: "none" "block" "inline-block" "flex" "inline-flex";
+
+@each $display in $displays {
+  .d-#{$display} {
+    display: #{$display};
+  }
+}
+
+/* Flex */
+$flex-directions: "row" "row-reverse" "column" "column-reverse";
+
+@each $direction in $flex-directions {
+  .direction-#{$direction} {
+    flex-direction: #{$direction};
+  }
+}
+
+$text-aligns: "left" "center" "right";
+
+@each $align in $text-aligns {
+  .text-#{$align} {
+    text-align: #{$align};
+  }
+}
+
+$justify-contents: (
+    ("start", "flex-start"),
+    ("end", "flex-end"),
+    ("center", "center"),
+    ("space-between", "space-between"),
+    ("space-around", "space-around"),
+    ("space-evenly", "space-evenly")
+);
+
+@each $item in $justify-contents {
+  .justify-#{nth($item, 1)} {
+    justify-content: #{nth($item, 2)};
+  }
+}
+
+$align-items: (
+    ("flex-start", "flex-start"),
+    ("flex-end", "flex-end"),
+    ("center", "center"),
+    ("stretch", "stretch"),
+    ("baseline", "baseline")
+);
+
+@each $item in $align-items {
+  .align-#{nth($item, 1)} {
+    align-items: #{nth($item, 2)};
+  }
+}
+
+/** Visibility utilities */
+@each $breakName, $breakValue in $breakpoints {
+  @if $breakName != "" {
+    @media (min-width: $breakValue) {
+      .d-#{$breakName}-none {
+        display: none;
+      }
+
+      .d-#{$breakName}-block {
+        display: block;
+      }
+
+      .d-#{$breakName}-inline {
+        display: inline;
+      }
+
+      .d-#{$breakName}-flex {
+        display: flex;
+      }
+    }
+  }
+}
+
+/** Utility classes */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.pt-18 {
+  padding-top: spacing(8);
+}
+
+.ptb-18 {
+  padding-top: spacing(8);
+  padding-bottom: spacing(8);
+}
+
+.ptb-20 {
+  padding-top: spacing(12);
+  padding-bottom: spacing(12);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.scrollable-x {
+  width: calc(100% + 30px);
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow-x: auto;
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  /* Chrome, Safari, Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .pb-10 {
+    padding-bottom: spacing(4);
+  }
+
+  .pt-18 {
+    padding-top: spacing(12);
+  }
+
+  .ptb-18 {
+    padding-top: spacing(12);
+    padding-bottom: spacing(12);
+  }
+
+  .ptb-20 {
+    padding-top: spacing(16);
+    padding-bottom: spacing(16);
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .pb-10 {
+    padding-bottom: spacing(10);
+  }
+
+  .pt-18 {
+    padding-top: spacing(18);
+  }
+
+  .ptb-18 {
+    padding-top: spacing(18);
+    padding-bottom: spacing(18);
+  }
+
+  .ptb-20 {
+    padding-top: spacing(20);
+    padding-bottom: spacing(20);
+  }
+}

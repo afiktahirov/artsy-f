@@ -1,0 +1,23 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.seller-address {
+  font-family: SFProDisplay-Regular, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  height: spacing(12);
+  padding: spacing(1) spacing(4);
+  background-color: #f9f9f9;
+  border-radius: spacing(1);
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    width: spacing(6);
+    min-width: spacing(6);
+  }
+
+  &__text {
+    padding-left: spacing(3);
+  }
+}

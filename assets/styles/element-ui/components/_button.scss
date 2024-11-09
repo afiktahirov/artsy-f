@@ -1,0 +1,30 @@
+.el-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: spacing(14);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: spacing(2);
+  }
+
+  &--default {
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+
+    &:hover {
+      border-color: #f1f8fa;
+    }
+  }
+
+  &--medium {
+    height: spacing(12);
+  }
+}

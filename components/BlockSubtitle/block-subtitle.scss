@@ -1,0 +1,15 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.block-subtitle {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: $color-text-secondary;
+  margin: spacing(-5) 0 spacing(6) 0;
+}
+
+@media (min-width: $screen-md) {
+  .block-subtitle {
+    margin: spacing(-7) 0 spacing(8) 0;
+  }
+}

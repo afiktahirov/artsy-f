@@ -1,0 +1,9 @@
+.el-radio {
+  &__inner {
+    &:after {
+      width: spacing(2);
+      height: spacing(2);
+      background-color: $color-black;
+    }
+  }
+}

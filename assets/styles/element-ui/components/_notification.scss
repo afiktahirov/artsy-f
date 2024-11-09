@@ -1,0 +1,17 @@
+.el-notification {
+  &.error {
+    background-color: $color-danger;
+  }
+
+  &.success {
+    background-color: $color-success;
+  }
+
+  &__content {
+    margin: spacing(1) 0 0 0;
+  }
+
+  &__closeBtn {
+    top: spacing(3);
+  }
+}

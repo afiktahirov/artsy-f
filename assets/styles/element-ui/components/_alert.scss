@@ -1,0 +1,22 @@
+.el-alert {
+  font-family: SFProDisplay-Medium, sans-serif;
+
+  &__icon {
+    margin-right: spacing(3);
+  }
+
+  &__content {
+    padding: 0;
+    font-size: 13px;
+    line-height: spacing(4);
+  }
+
+  &__title {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &--warning.is-dark {
+    color: $color-text-primary;
+  }
+}

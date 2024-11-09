@@ -1,0 +1,29 @@
+.products-page {
+  .recently-viewed {
+    padding-top: spacing(10);
+    border-top: 1px solid $border-color;
+  }
+}
+
+.product-details-container {
+  padding-bottom: spacing(9);
+  margin-bottom: spacing(8);
+  border-bottom: 1px solid $border-color;
+
+  .product-gallery {
+    margin-bottom: spacing(6);
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .products-page {
+    .recently-viewed {
+      padding-top: spacing(13);
+    }
+  }
+
+  .product-details-container {
+    padding-bottom: spacing(16);
+    margin-bottom: spacing(12);
+  }
+}

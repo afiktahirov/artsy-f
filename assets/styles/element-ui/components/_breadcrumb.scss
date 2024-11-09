@@ -1,0 +1,35 @@
+.el-breadcrumb {
+  display: flex;
+  font-size: 1.2rem;
+  padding: 4px 15px;
+  overflow-y: hidden;
+
+  &__item {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  &__inner {
+    font-weight: normal;
+    color: $color-text-primary !important;
+
+    &.is-link {
+      font-weight: normal;
+      color: $color-text-secondary !important;
+
+      &:hover {
+        color: $color-primary !important;
+      }
+    }
+  }
+
+  &__separator {
+    margin: 0 spacing(2);
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .el-breadcrumb {
+    font-size: 1.4rem;
+  }
+}

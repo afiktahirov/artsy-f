@@ -1,0 +1,10 @@
+.el-textarea {
+  &__inner {
+    padding: 12px 15px;
+    font-family: SFProDisplay-Regular, sans-serif;
+  }
+
+  .el-input__count {
+    color: $color-text-secondary;
+  }
+}

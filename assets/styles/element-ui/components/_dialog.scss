@@ -1,0 +1,54 @@
+.el-dialog {
+  width: calc(100% - 30px);
+  margin-top: 5vh !important;
+
+  &__header {
+    padding: spacing(5) spacing(5) 0 spacing(5);
+  }
+
+  &__headerbtn {
+    top: 2.4rem;
+    right: 2.4rem;
+  }
+
+  &__close {
+    font-size: 2.4rem;
+  }
+
+  &__title {
+    font-family: SFProDisplay-SemiBold, sans-serif;
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+
+  &__body {
+    padding: spacing(5);
+  }
+
+  &__footer {
+    padding: 0 spacing(5) spacing(5) spacing(5);
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .el-dialog {
+    width: 440px;
+
+    &__header {
+      padding: spacing(8) spacing(8) 0 spacing(8);
+    }
+
+    &__title {
+      font-size: 2.8rem;
+      line-height: 4rem;
+    }
+
+    &__body {
+      padding: spacing(8);
+    }
+
+    &__footer {
+      padding: 0 spacing(8) spacing(8) spacing(8);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.social-chip {
+  position: relative;
+  padding: spacing(4) spacing(8) spacing(4) spacing(4);
+  margin-bottom: spacing(3);
+  border: 1px solid $border-color;
+  border-radius: spacing(1);
+
+  &_attached {
+    .social-chip__label {
+      font-family: SFProDisplay-Regular, sans-serif;
+      color: $color-text-secondary;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    margin-right: spacing(3);
+  }
+
+  &__label {
+    font-family: SFProDisplay-Medium, sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__button {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    right: spacing(4);
+    color: $color-text-secondary;
+    transform: translateY(-50%);
+
+    &:hover {
+      color: $color-black;
+    }
+
+    svg {
+      width: spacing(4);
+    }
+  }
+}

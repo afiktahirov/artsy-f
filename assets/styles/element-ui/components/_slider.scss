@@ -1,0 +1,19 @@
+.el-slider {
+  width: calc(100% - 14px);
+  margin-left: 7px;
+
+  &__button-wrapper {
+    z-index: 5;
+  }
+
+  &__button {
+    background-color: $color-black;
+    border-color: $color-white;
+    border-radius: 4px;
+
+    &.hover,
+    &.dragging {
+      transform: scale(1);
+    }
+  }
+}

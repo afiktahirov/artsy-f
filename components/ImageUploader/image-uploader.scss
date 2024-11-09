@@ -1,0 +1,128 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.image-uploader {
+  &__title {
+    font-family: SFProDisplay-Medium, sans-serif;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    color: $color-text-primary;
+    margin-bottom: spacing(1);
+  }
+
+  &__subtitle {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: $color-text-secondary;
+    margin-bottom: spacing(8);
+  }
+
+  &__grid {
+    padding: 0 spacing(2);
+
+    &-item {
+      display: inline-flex;
+      min-width: 100px;
+      width: var(--grid-size);
+      padding: 0 spacing(2);
+    }
+  }
+
+  &__trigger,
+  &__preview {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: spacing(1);
+    overflow: hidden;
+  }
+
+  &__trigger {
+    border: 1px dashed #d9d9d9;
+    transition: background .2s ease;
+
+    &:hover {
+      background-color: $border-color;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__preview {
+    border: 1px solid transparent;
+
+    &-actions,
+    .el-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-actions {
+      opacity: 0;
+      z-index: 5;
+      background-color: rgba($color-black, .08);
+      transition: .2s ease;
+
+      button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: spacing(8);
+        height: spacing(8);
+        background-color: $color-white;
+        border-radius: 50%;
+        box-shadow: 0 12px 12px rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    &:hover {
+      .image-uploader__preview-actions {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__cropper-dialog {
+    .el-dialog {
+      width: calc(100% - 30px);
+
+      &__headerbtn {
+        top: spacing(4);
+        right: spacing(4);
+      }
+
+      &__body {
+        padding: spacing(4);
+      }
+
+      &__footer {
+        padding: 0 spacing(4) spacing(4);
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .image-uploader {
+    &__title {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      margin-bottom: spacing(2);
+    }
+
+    &__cropper-dialog {
+      .el-dialog {
+        width: 600px;
+      }
+    }
+  }
+}

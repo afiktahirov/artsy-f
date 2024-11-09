@@ -1,0 +1,25 @@
+@import "assets/styles/variables";
+
+.floating-label {
+  position: relative;
+
+  &--focused {
+    .floating-label__text {
+      top: -7px;
+      left: 11px;
+      font-size: 1.2rem;
+      background-color: $color-white;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: 19px;
+    left: 12px;
+    padding: 0 5px;
+    line-height: 1.6rem;
+    color: $color-text-secondary;
+    pointer-events: none;
+    transition: .2s ease;
+  }
+}

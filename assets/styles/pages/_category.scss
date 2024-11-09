@@ -1,0 +1,16 @@
+.show-filters {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: spacing(11);
+  height: spacing(11);
+  background-color: $color-white;
+  border: 1px solid $border-color;
+  border-radius: 0 spacing(1) spacing(1) 0;
+  border-left: 0;
+  z-index: 15;
+  transform: translateY(-50%);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}

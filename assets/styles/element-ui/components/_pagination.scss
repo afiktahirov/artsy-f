@@ -1,0 +1,41 @@
+.el-pagination.is-background {
+  padding: 0;
+
+  .btn-prev,
+  .btn-next,
+  .el-pager li {
+    min-width: 36px;
+  }
+
+  .btn-prev {
+    margin-left: 0;
+  }
+
+  .btn-next {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: $screen-md) {
+  .el-pagination.is-background {
+    .btn-prev,
+    .btn-next,
+    .el-pager li {
+      min-width: 30px;
+      line-height: 30px;
+      height: 30px;
+    }
+
+    .btn-prev {
+      &:disabled {
+        display: none;
+      }
+    }
+
+    .btn-next {
+      &:disabled {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<template>
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.5007 17.0002H6.50024C3.70005 17.0002 3 16.3001 3 13.4999V12.0998C3 9.29966 3.70005 8.59961 6.50024 8.59961H13.5007C16.3009 8.59961 17.0009 9.29966 17.0009 12.0998V13.4999C17.0009 16.3001 16.3009 17.0002 13.5007 17.0002Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.7998 8.60038V7.20028C5.7998 4.88313 6.49985 3 10.0001 3C13.1503 3 14.2004 4.40009 14.2004 6.50024" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.0001 14.55C10.9667 14.55 11.7502 13.7665 11.7502 12.7999C11.7502 11.8334 10.9667 11.0498 10.0001 11.0498C9.03355 11.0498 8.25 11.8334 8.25 12.7999C8.25 13.7665 9.03355 14.55 10.0001 14.55Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: "lock"
+}
+</script>

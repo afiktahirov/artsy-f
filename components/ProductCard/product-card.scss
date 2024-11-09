@@ -1,0 +1,134 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.product-card {
+  position: relative;
+  margin-bottom: spacing(6);
+
+  &:hover,
+  &.product-card_favourite {
+    .add-to-favourite {
+      display: inline-flex;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: spacing(3);
+    right: spacing(3);
+    z-index: 5;
+
+    button,
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: spacing(8);
+      height: spacing(8);
+      background-color: $color-white;
+      border-radius: 50%;
+      box-shadow: 0 12px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    > * {
+      margin-left: spacing(3);
+    }
+  }
+
+  &__tags {
+    position: absolute;
+    top: spacing(3);
+    left: spacing(3);
+    z-index: 5;
+
+    .el-tag {
+      margin-right: spacing(1);
+    }
+  }
+
+  &__image {
+    height: 0;
+    position: relative;
+    padding-bottom: 100%;
+    margin-bottom: spacing(4);
+    border-radius: spacing(1);
+    background-color: $border-color;
+    overflow: hidden;
+
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .el-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    line-height: 1.6rem;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    line-height: inherit;
+    color: $color-text-secondary;
+  }
+
+  &__rating {
+    margin: spacing(2) 0;
+
+    &-count {
+      font-size: 1.2rem;
+      color: $color-text-secondary;
+      margin: 0 spacing(1);
+      transform: translateY(1px);
+    }
+  }
+
+  &__price {
+    font-family: SFProDisplay-Regular, sans-serif;
+    line-height: 1.2;
+    margin-top: spacing(2);
+
+    .old {
+      font-size: 1.2rem;
+      color: $color-text-placeholder;
+      text-decoration: line-through;
+    }
+
+    .current {
+      font-family: SFProDisplay-Medium, sans-serif;
+      margin-right: spacing(2);
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .product-card {
+    margin-bottom: spacing(10);
+
+    .add-to-favourite {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .product-card {
+    margin-bottom: spacing(10);
+
+    &__info {
+      line-height: 1.7rem;
+    }
+
+    &__title {
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+    }
+  }
+}

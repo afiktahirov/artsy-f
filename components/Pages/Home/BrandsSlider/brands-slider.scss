@@ -1,0 +1,36 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.brands-slider {
+  &__content {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.brand-logo {
+  display: block;
+  position: relative;
+  height: 0;
+  padding-bottom: 75%;
+  opacity: .72;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 24px);
+    height: calc(100% - 40px);
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .brand-logo {
+    img {
+      width: calc(100% - 32px);
+      height: calc(100% - 64px);
+    }
+  }
+}

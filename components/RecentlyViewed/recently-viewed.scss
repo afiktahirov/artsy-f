@@ -1,0 +1,12 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.recently-viewed {
+  margin-top: spacing(11);
+}
+
+@media (min-width: $screen-lg) {
+  .recently-viewed {
+    margin-top: spacing(14);
+  }
+}

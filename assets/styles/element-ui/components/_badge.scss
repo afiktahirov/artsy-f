@@ -1,0 +1,11 @@
+.el-badge {
+  &__content {
+    font-family: "SFProDisplay-SemiBold", sans-serif;
+    width: 16px;
+    border: none;
+
+    &.is-fixed {
+      transform: translateY(-40%) translateX(100%);
+    }
+  }
+}

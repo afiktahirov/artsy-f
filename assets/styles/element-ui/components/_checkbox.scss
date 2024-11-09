@@ -1,0 +1,12 @@
+.el-checkbox {
+  font-weight: 600;
+
+  &__inner {
+    &:after {
+      top: 2px;
+      left: 6px;
+      height: 8px;
+      border-width: 2px;
+    }
+  }
+}

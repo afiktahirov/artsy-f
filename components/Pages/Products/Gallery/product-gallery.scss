@@ -1,0 +1,103 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.product-gallery {
+  &__thumbs {
+    display: flex;
+    width: 100%;
+    padding: spacing(3) 0 0 0;
+    overflow-x: auto;
+  }
+
+  &__main {
+    width: 100%;
+  }
+
+  &__image {
+    height: 0;
+    position: relative;
+    padding-bottom: 100%;
+    background-color: $border-color;
+    border-radius: spacing(1);
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    background-color: $border-color;
+    border-radius: spacing(1);
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      z-index: 5;
+      background-color: $color-primary;
+      transition: height .2s ease;
+    }
+
+    &:not(:last-child) {
+      margin: 0 spacing(3) 0 0;
+    }
+
+    &.active {
+      &:after {
+        height: 3px;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .product-gallery {
+    &__thumbs {
+      display: block;
+      width: 80px;
+      padding: 0 spacing(3) 0 0;
+      overflow-x: hidden;
+    }
+
+    &__thumb {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+
+      &:not(:last-child) {
+        margin: 0 0 spacing(2) 0;
+      }
+    }
+
+    &__main {
+      order: 1;
+      width: calc(100% - 80px);
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .product-gallery {
+    &__thumbs {
+      width: 60px;
+      padding: 0 spacing(3) 0 0;
+    }
+
+    &__main {
+      width: calc(100% - 60px);
+    }
+  }
+}

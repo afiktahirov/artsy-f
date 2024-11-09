@@ -1,0 +1,19 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.upgrade-plan-form {
+  .el-form-item__label {
+    display: inline-block;
+    float: none;
+    padding-bottom: spacing(5) !important;
+  }
+
+  .el-radio {
+    display: block;
+    margin: 0 0 spacing(4) 0;
+
+    &:last-child {
+      margin: 0 0 spacing(2) 0;
+    }
+  }
+}

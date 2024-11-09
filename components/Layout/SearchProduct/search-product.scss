@@ -1,0 +1,19 @@
+@import "assets/styles/variables";
+
+.search-product {
+  width: 100%;
+  justify-content: space-between;
+
+  &__category {
+    font-size: 1.2rem;
+    color: $color-text-secondary;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .search-product {
+    &__name {
+      font-size: 1.6rem;
+    }
+  }
+}

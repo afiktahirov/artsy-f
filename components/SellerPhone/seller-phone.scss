@@ -1,0 +1,30 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.seller-phone {
+  font-family: SFProDisplay-Medium, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  height: spacing(12);
+  color: $color-white;
+  border-radius: spacing(1);
+  padding: spacing(1) spacing(4);
+  background-color: $color-primary;
+  cursor: pointer;
+
+  &_visible {
+    color: $color-text-primary;
+    background-color: #f9f9f9;
+  }
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    width: spacing(6);
+    min-width: spacing(6);
+  }
+
+  &__credentials {
+    padding-left: spacing(3);
+  }
+}

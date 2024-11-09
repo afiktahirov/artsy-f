@@ -1,0 +1,54 @@
+@import "assets/styles/variables";
+@import "assets/styles/utils";
+
+.review-card {
+  padding: spacing(6);
+  background-color: #f9f9f9;
+  border-radius: spacing(1);
+
+  &__author {
+    font-family: SFProDisplay-Medium, sans-serif;
+    line-height: 1.8rem;
+  }
+
+  &__date {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: $color-text-secondary;
+  }
+
+  &__rating {
+    margin: spacing(2) 0 spacing(3) 0;
+
+    &-count {
+      font-size: 1.2rem;
+      color: $color-text-secondary;
+      margin: 0 spacing(1);
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: $color-text-secondary;
+
+    > * {
+      &:not(:last-child) {
+        margin-bottom: spacing(4);
+      }
+    }
+  }
+
+  &__link {
+    line-height: 2rem;
+    display: inline-block;
+    margin-top: spacing(4);
+    color: $color-text-placeholder;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+  }
+}

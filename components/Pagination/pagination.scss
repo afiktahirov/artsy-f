@@ -1,0 +1,11 @@
+@import "assets/styles/variables";
+
+.pagination {
+  justify-content: center;
+}
+
+@media (min-width: $screen-md) {
+  .pagination {
+    justify-content: space-between;
+  }
+}

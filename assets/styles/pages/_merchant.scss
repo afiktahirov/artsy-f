@@ -1,0 +1,47 @@
+.merchant-page {
+  .reviews-slider {
+    margin-top: spacing(17);
+    padding-top: spacing(12);
+    border-top: 1px solid $border-color;
+  }
+}
+
+.merchant-products-page {
+  .page-info {
+    margin-bottom: spacing(8);
+  }
+}
+
+.merchant-info-page {
+  .el-divider {
+    margin: spacing(6);
+  }
+
+  .upload-avatar {
+    margin-bottom: spacing(8);
+  }
+}
+
+.merchant-settings-page {
+  .el-divider {
+    margin: spacing(6) 0 spacing(8) 0;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .merchant-info-page {
+    .el-divider {
+      margin: spacing(10) 0;
+    }
+
+    .upload-avatar {
+      margin-bottom: spacing(12);
+    }
+  }
+
+  .merchant-settings-page {
+    .el-divider {
+      margin: spacing(10) 0 spacing(12) 0;
+    }
+  }
+}
