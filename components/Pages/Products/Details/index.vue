@@ -19,42 +19,26 @@
 
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <share-network
-                  network="facebook"
-                  :title="details.title"
-                  :media="details.images[0]"
-                  :url="`https://artsy.com/products/${details.id}`"
-                >
+                <share-network network="facebook" :title="details.title" :media="details.images[0]"
+                  :url="`https://artsy.com/products/${details.id}`">
                   Facebook
                 </share-network>
               </el-dropdown-item>
               <el-dropdown-item>
-                <share-network
-                  network="twitter"
-                  :title="details.title"
-                  :media="details.images[0]"
-                  :url="`https://artsy.com/products/${details.id}`"
-                >
+                <share-network network="twitter" :title="details.title" :media="details.images[0]"
+                  :url="`https://artsy.com/products/${details.id}`">
                   Twitter
                 </share-network>
               </el-dropdown-item>
               <el-dropdown-item>
-                <share-network
-                  network="whatsapp"
-                  :title="details.title"
-                  :media="details.images[0]"
-                  :url="`https://artsy.com/products/${details.id}`"
-                >
+                <share-network network="whatsapp" :title="details.title" :media="details.images[0]"
+                  :url="`https://artsy.com/products/${details.id}`">
                   Whatsapp
                 </share-network>
               </el-dropdown-item>
               <el-dropdown-item>
-                <share-network
-                  network="telegram"
-                  :title="details.title"
-                  :media="details.images[0]"
-                  :url="`https://artsy.com/products/${details.id}`"
-                >
+                <share-network network="telegram" :title="details.title" :media="details.images[0]"
+                  :url="`https://artsy.com/products/${details.id}`">
                   Telegram
                 </share-network>
               </el-dropdown-item>
@@ -70,14 +54,8 @@
       <h2 class="product-details__title">{{ details.title }}</h2>
       <div class="product-details__rating d-flex align-items">
         <client-only>
-          <star-rating
-            :rating="details.rating"
-            :star-size="14"
-            :increment="0.3"
-            :read-only="true"
-            :show-rating="false"
-            active-color="#000000"
-          />
+          <star-rating :rating="details.rating" :star-size="14" :increment="0.3" :read-only="true" :show-rating="false"
+            active-color="#000000" />
           <span class="product-details__rating-count">({{ details.ratings_count }})</span>
         </client-only>
       </div>
@@ -99,24 +77,22 @@
 
     <el-divider />
 
-    <template v-if="details.status === 'disabled'">
-      <div class="product-details__actions d-flex flex-wrap">
-        <button class="product-details__actions-item d-flex align-center">
-          <img src="/images/icons/clock.svg" alt="Clock icon">
-          {{ $t("action.restore") }}
-        </button>
-        <button class="product-details__actions-item d-flex align-center" @click="triggerMakeVip">
-          <img src="/images/icons/diamond.svg" alt="Diamond icon">
-          {{ $t("action.make_vip") }}
-        </button>
-      </div>
-    </template>
-    <template v-else>
+    <div class="product-details__actions d-flex flex-wrap">
+      <button v-if="details.status === 'disabled'" class="product-details__actions-item d-flex align-center">
+        <img src="/images/icons/clock.svg" alt="Clock icon">
+        {{ $t("action.restore") }}
+      </button>
+      <button class="product-details__actions-item d-flex align-center" @click="triggerMakeVip">
+        <img src="/images/icons/diamond.svg" alt="Diamond icon">
+        {{ $t("action.make_vip") }}
+      </button>
+    </div>
+    <!-- <template v-else>
       <div class="product-details__seller-info d-flex flex-wrap align-flex-start">
         <seller-phone :phone="details.owner.phone" />
         <seller-badge :image="details.owner.avatar" :name="details.owner.name" />
       </div>
-    </template>
+    </template> -->
   </div>
 </template>
 
