@@ -7,7 +7,8 @@ export const state = () => ({
   },
   recentlyViewed: [],
   productDetails: {},
-  productReviews: {}
+  productReviews: {},
+  tag_ids : []
 })
 
 export const getters = {
@@ -16,7 +17,8 @@ export const getters = {
   getFilterAttributes: (state) => state.filters.attributes.data || [],
   getRecentlyViewed: (state) => state.recentlyViewed.data || [],
   getProductDetails: (state) => state.productDetails.data || {},
-  getProductReviews: (state) => state.productReviews.data || []
+  getProductReviews: (state) => state.productReviews.data || [],
+  getTagIds: (state) => state.tag_ids.data || []
 }
 
 export const mutations = {
@@ -38,6 +40,10 @@ export const mutations = {
 
   SET_PRODUCT_REVIEWS(state, data) {
     state.productReviews = data;
+  },
+
+  SET_TAG_IDS(state, data) {
+    state.tag_ids = data;
   }
 }
 
@@ -51,6 +57,15 @@ export const actions = {
       commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
     } catch (error) {
       commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
+    }
+  },
+
+  async fetchTags({ commit }) {
+    try {
+      const res = await this.$axios.get('/tags')
+      commit('SET_TAG_IDS', res.data)
+    } catch (error) {
+      console.log(error)
     }
   },
 

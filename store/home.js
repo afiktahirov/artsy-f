@@ -3,7 +3,8 @@ export const state = () => ({
   banners: {},
   vipProducts: {},
   latestProducts: {},
-  popularCustomers: {}
+  popularCustomers: {},
+  secondBanners : {}
 })
 
 export const getters = {
@@ -21,6 +22,10 @@ export const getters = {
 
   getPopularCustomers: (state) => {
     return state.popularCustomers.data || []
+  },
+
+  getSecondBanners : (state) => {
+    return state.secondBanners.data || []
   }
 }
 
@@ -35,6 +40,10 @@ export const mutations = {
 
   SET_POPULAR_CUSTOMERS(state, data) {
     state.popularCustomers = data;
+  },
+  
+  SET_SECOND_BANNERS(state, data){
+    state.secondBanners = data
   }
 }
 
@@ -76,6 +85,15 @@ export const actions = {
     try {
       const res = await this.$axios.get("/customers/popular")
       commit('SET_POPULAR_CUSTOMERS', res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async fetchSecondBanners({ commit }) {
+    try {
+      const res = await this.$axios.get("/staticBanners")
+      commit('SET_SECOND_BANNERS', res.data)
     } catch (error) {
       console.log(error)
     }

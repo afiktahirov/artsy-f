@@ -106,6 +106,7 @@ export default {
     "product_name": "Məhsulun adı",
     "product_description": "Məhsul haqqında ətraflı məlumat",
     "category": "Kateqoriya",
+    "tags" : "Teqlər",
     "product_type": "Məhsul tipi",
     "price": "Qiymət",
     "discount_percent": "Endirim faizi",

@@ -36,6 +36,11 @@ export default {
           this.$router.push(this.localeRoute("profile-products"))
         })
     }
+  },
+  async asyncData({ store }) {
+    await Promise.all([
+      store.dispatch("products/fetchTags"),
+    ])
   }
 }
 </script>

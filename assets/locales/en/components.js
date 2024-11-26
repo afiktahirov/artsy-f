@@ -106,6 +106,7 @@ export default {
     "product_name": "Product name",
     "product_description": "Product description",
     "category": "Category",
+    "tags" : "Tags",
     "product_type": "Product type",
     "price": "Price",
     "discount_percent": "Discount percent",

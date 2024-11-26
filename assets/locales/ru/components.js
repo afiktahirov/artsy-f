@@ -106,6 +106,7 @@ export default {
     "product_name": "Название товара",
     "product_description": "Подробная информация о товаре",
     "category": "Категория",
+    "tags" : "Теги",
     "product_type": "Тип продукта",
     "price": "Цена",
     "has_discount": "На товар имеется скидка",

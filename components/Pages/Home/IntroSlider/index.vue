@@ -34,7 +34,6 @@ export default {
   },
   mounted() {
     Swiper.use([Autoplay, Lazy])
-
     new Swiper(".intro-slider .swiper", {
       autoplay: {
         delay: 7000,

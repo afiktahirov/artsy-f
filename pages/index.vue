@@ -3,6 +3,7 @@
     <intro-slider />
     <vip-offers />
     <banners />
+    <SecondBanners /> 
     <latest-publications />
     <brands-slider />
     <how-it-works />
@@ -16,10 +17,11 @@ import Banners from "@/components/Pages/Home/BannersSlider";
 import LatestPublications from "@/components/Pages/Home/LatestPublications";
 import BrandsSlider from "@/components/Pages/Home/BrandsSlider";
 import HowItWorks from "@/components/Pages/Home/HowItWorks";
+import SecondBanners from "@/components/Pages/Home/SecondBanners"
 
 export default {
   name: 'HomePage',
-  components: { IntroSlider, VipOffers, Banners, LatestPublications, BrandsSlider, HowItWorks },
+  components: { IntroSlider, VipOffers, Banners, LatestPublications, BrandsSlider, HowItWorks, SecondBanners },
   comments: {
     IntroSlider
   },
@@ -29,6 +31,7 @@ export default {
       store.dispatch('home/fetchPopularCustomers'),
       store.dispatch('home/fetchVipProducts', { perPage: 8 }),
       store.dispatch('home/fetchLatestProducts', { perPage: 8 }),
+      store.dispatch('home/fetchSecondBanners')
     ])
   }
 }

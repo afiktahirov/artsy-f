@@ -20,6 +20,7 @@
               </floating-label>
             </el-form-item>
           </el-col>
+
           <el-col :sm="12">
             <el-form-item prop="category_id">
               <floating-label :value="form.category_id" :label="$t('product_form.category')">
@@ -31,10 +32,25 @@
               </floating-label>
             </el-form-item>
           </el-col>
+
+          <el-col :sm="12">
+            <el-form-item prop="tag_ids">
+              <floating-label :value="form.tag_ids" :label="$t('product_form.tags')">
+                <el-select v-model="form.tag_ids" multiple  @focus="isFocused = true" @blur="isFocused = false"
+                   placeholder=" ">
+                  <template v-for="tag in tags">
+                    <el-option  :key="tag.id" :value="tag.id" :label="tag.title" />
+                  </template>
+                </el-select>
+              </floating-label>
+            </el-form-item>
+          </el-col>
+
           <el-col :sm="12" v-for="(attr, index) in attributes" :key="attr.id">
             <el-form-item prop="attributes">
               <floating-label :value="form.attributes.get(index)" :label="attr.title">
-                <el-select :value="form.attributes.get(index)" @change="handleAttributeChange($event, index)" placeholder="">
+                <el-select :value="form.attributes.get(index)" @change="handleAttributeChange($event, index)"
+                  placeholder="">
                   <el-option v-for="item in attr.values" :key="item.id" :value="item.id" :label="item.value" />
                 </el-select>
               </floating-label>
@@ -131,6 +147,7 @@ export default {
         discount_type: "",
         is_preorder: 0,
         images: null,
+        tag_ids: []
       })
     }
   },
@@ -182,7 +199,9 @@ export default {
         discount_type: "",
         is_preorder: Boolean(this.initialData.is_preorder),
         images: this.initialData.images || [],
+        tag_ids: this.initialData.tag_ids || []
       },
+      isFocused: false,
       rules: {
         title: [
           { required: true, message: this.$t("errors.required"), trigger: "change" },
@@ -207,6 +226,9 @@ export default {
         images: [
           { required: true, message: this.$t("errors.add_images"), trigger: "change" },
         ],
+        tag_ids: [
+          { required: true, message: this.$t("errors.required"), trigger: "change" },
+        ],
       }
     }
   },
@@ -228,7 +250,8 @@ export default {
     }),
     ...mapGetters({
       categories: "layout/getChildCategories",
-      attributes: "products/getFilterAttributes"
+      attributes: "products/getFilterAttributes",
+      tags : "products/getTagIds"
     })
   },
   watch: {
