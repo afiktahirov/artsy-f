@@ -2,7 +2,7 @@
   <section class="main-page">
     <intro-slider />
     <vip-offers />
-    <banners />
+    <!-- <banners /> -->
     <SecondBanners /> 
     <latest-publications />
     <brands-slider />

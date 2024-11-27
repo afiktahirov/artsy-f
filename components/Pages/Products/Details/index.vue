@@ -77,7 +77,7 @@
 
     <el-divider />
 
-    <div class="product-details__actions d-flex flex-wrap">
+    <div v-if="profileView" class="product-details__actions d-flex flex-wrap">
       <button v-if="details.status === 'disabled'" class="product-details__actions-item d-flex align-center">
         <img src="/images/icons/clock.svg" alt="Clock icon">
         {{ $t("action.restore") }}
@@ -87,12 +87,12 @@
         {{ $t("action.make_vip") }}
       </button>
     </div>
-    <!-- <template v-else>
+    <template>
       <div class="product-details__seller-info d-flex flex-wrap align-flex-start">
         <seller-phone :phone="details.owner.phone" />
         <seller-badge :image="details.owner.avatar" :name="details.owner.name" />
       </div>
-    </template> -->
+    </template>
   </div>
 </template>
 
@@ -134,6 +134,9 @@ export default {
 
       return format(new Date(this.details.published_at), "dd MMMM yyyy", { locale })
     }
+  },
+  mounted(){
+    console.log(this.$props.profileView)
   },
   methods: {
     triggerMakeVip() {
