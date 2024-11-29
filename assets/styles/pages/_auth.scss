@@ -46,6 +46,7 @@
     border-radius: $base;
     border: 1px solid $border-color;
     transition: background .3s ease;
+    cursor: pointer;
 
     &:hover {
       background-color: #f2f2f2;

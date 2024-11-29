@@ -28,7 +28,10 @@
 
         <ul class="auth-links">
           <li class="auth-links__item">
-            <a class="auth-links__link" :href="`${$config.baseURL}/auth/social?driver=google`">
+            <!-- <a class="auth-links__link" :href="`https://api.artsy.az/api/v1/auth/social?driver=google`">
+              <google-icon />
+            </a> -->
+            <a class="auth-links__link" @click.prevent="redirectToGoogleAuth">
               <google-icon />
             </a>
           </li>
@@ -86,11 +89,25 @@ export default {
           try {
             this.pending = true;
             await this.$store.dispatch("user/login", this.form);
-          } catch(error) {
+          } catch (error) {
             this.pending = false;
           }
         }
       })
+    },
+    async redirectToGoogleAuth() {
+      try {
+        const response = await fetch('https://api.artsy.az/api/v1/auth/social?driver=google');
+        const data = await response.json();
+
+        if (data.redirectUrl) {
+          window.location.href = data.redirectUrl;
+        } else {
+          console.error('Redirect URL not found in response.');
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
     }
   }
 }
