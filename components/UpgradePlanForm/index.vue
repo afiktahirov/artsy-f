@@ -49,8 +49,8 @@ export default {
           productId: this.$route.params.id,
           packageId: this.form.packageId
         })
-        console.log(res)
-        // window.location = res.data.redirectUrl
+        // console.log(res)
+        window.location = res.redirect_url
       } catch (error) {
         this.pending = false
       }
