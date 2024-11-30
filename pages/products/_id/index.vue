@@ -9,6 +9,7 @@
         <div class="product-details-container">
           <el-row :gutter="20" type="flex" class="flex-wrap">
             <el-col :lg="10">
+
               <product-gallery :images="details.images || []" />
             </el-col>
             <el-col :lg="14">

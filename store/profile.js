@@ -120,7 +120,7 @@ export const actions = {
 
   async makeProductVip(_, { productId, packageId }) {
     try {
-      const res = await this.$axios.post(`/products/my/${productId}/vip/${packageId}`)
+      const res = await this.$axios.post(`/payment/checkout?product_id=${productId}&vip_package_id=${packageId}`)
       return res.data
     } catch (error) {
       return Promise.reject(error)
