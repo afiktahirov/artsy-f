@@ -6,6 +6,13 @@ export default {
     "no_search_results": "No results found for “{query}”",
   },
 
+  "pop_up" : {
+    "success" : "Payment was completed successfully!",
+    "error" : "There was an error with the payment.",
+    "failed" : "Unknown payment status.",
+    "button" : "Close"
+  },
+
   "user_dropdown": {
     "add_product": "Add product",
     "my_products": "My products",

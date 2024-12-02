@@ -6,6 +6,13 @@ export default {
     "no_search_results": "Sorğu üzrə bütün nəticə tapılmadı",
   },
 
+  "pop_up" : {
+    "success" : "Ödəniş uğurla tamamlandı!",
+    "error" : "Ödəniş zamanı xəta baş verdi.",
+    "failed" : "Bilinməyən ödəniş statusu.",
+    "button" : "Bağla"
+  },
+
   "user_dropdown": {
     "add_product": "Yeni məhsul",
     "my_products": "Məhsullarım",

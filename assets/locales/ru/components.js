@@ -6,6 +6,13 @@ export default {
     "no_search_results": "По запросу “{query}” ничего не найдено",
   },
 
+  "pop_up" : {
+    "success" : "Платеж был успешно завершен!",
+    "error" : "Произошла ошибка при платеже.",
+    "failed" : "Неизвестный статус платежа.",
+    "button" : "Закрыть"
+  },
+
   "user_dropdown": {
     "add_product": "Добавить товар",
     "my_products": "Мои товары",
