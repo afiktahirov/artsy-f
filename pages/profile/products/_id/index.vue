@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     handleUpgradePlan() {
+      console.log("first")
       this.isUpgratePlanModalVisible = true
     },
 

@@ -135,11 +135,9 @@ export default {
       return format(new Date(this.details.published_at), "dd MMMM yyyy", { locale })
     }
   },
-  mounted(){
-    console.log(this.$props.profileView)
-  },
   methods: {
     triggerMakeVip() {
+      console.log("first")
       this.$emit("on-upgrade-plan")
     }
   }
