@@ -23,7 +23,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="brand in brands" :key="brand.id">
               <nuxt-link class="brand-logo" :to="$localePath('merchant-id-products', { id: brand.id })">
-                <img :src="brand.avatar" :alt="brand.name">
+                <img :src="brand.avatar ? brand.avatar : '/images/brands/user.jpg'" :alt="brand.name">
               </nuxt-link>
             </div>
           </div>

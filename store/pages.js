@@ -28,7 +28,9 @@ export const mutations = {
 export const actions = {
   async fetchFaq({ commit }) {
     try {
-      const res = await this.$axios.get("about/faq?perPage=100")
+      const res = await this.$axios.get("about/faq?perPage=100", {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit("SET_FAQ", res.data)
     } catch (error) {
       console.log(error)
@@ -37,7 +39,9 @@ export const actions = {
 
   async fetchHowItWorks({ commit }) {
     try {
-      const res = await this.$axios.get("about/how-works")
+      const res = await this.$axios.get("about/how-works", {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit("SET_HOW_IT_WORKS", res.data)
     } catch (error) {
       console.log(error)
@@ -46,7 +50,9 @@ export const actions = {
 
   async fetchSafeShopping({ commit }) {
     try {
-      const res = await this.$axios.get("about/safe-shopping")
+      const res = await this.$axios.get("about/safe-shopping", {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit("SET_SAFE_SHOPPING", res.data)
     } catch (error) {
       console.log(error)
@@ -55,7 +61,9 @@ export const actions = {
 
   async fetchTermsOfUse({ commit }) {
     try {
-      const res = await this.$axios.get("about/terms-of-use")
+      const res = await this.$axios.get("about/terms-of-use", {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit("SET_TERMS_OF_USE", res.data)
     } catch (error) {
       console.log(error)
@@ -64,7 +72,9 @@ export const actions = {
 
   async fetchPrivacyPolicy({ commit }) {
     try {
-      const res = await this.$axios.get("about/confidentiality")
+      const res = await this.$axios.get("about/confidentiality", {
+        hedaers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit("SET_PRIVACY_POLICY", res.data)
     } catch (error) {
       console.log(error)

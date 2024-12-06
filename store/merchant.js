@@ -30,7 +30,9 @@ export const mutations = {
 export const actions = {
   async fetchDetails({ commit }, id) {
     try {
-      const res = await this.$axios.get(`/customers/${id}`)
+      const res = await this.$axios.get(`/customers/${id}`, {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_DETAILS', res.data)
     } catch (error) {
       console.log(error)
@@ -41,7 +43,10 @@ export const actions = {
     commit('SET_LOADING', { module: 'merchant', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/products', { params })
+      const res = await this.$axios.get('/products', { 
+        params,
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_DATA', { module: 'merchant', data: res.data }, { root: true })
     } catch (error) {
       commit('SET_LOADING', { module: 'merchant', loading: false }, { root: true })
@@ -52,7 +57,9 @@ export const actions = {
 
   async fetchCategories({ commit }, id) {
     try {
-      const res = await this.$axios.get(`/categories/by-customer/${id}`)
+      const res = await this.$axios.get(`/categories/by-customer/${id}`, {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_MERCHANT_CATEGORIES', res.data)
     } catch (error) {
       console.log(error)
@@ -61,7 +68,9 @@ export const actions = {
 
   async fetchReviews({ commit }, id) {
     try {
-      const res = await this.$axios.get(`/reviews/by-customer/${id}`)
+      const res = await this.$axios.get(`/reviews/by-customer/${id}`, {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_MERCHANT_REVIEWS', res.data)
     } catch (error) {
       console.log(error)

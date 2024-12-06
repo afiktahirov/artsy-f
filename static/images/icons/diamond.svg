@@ -63,6 +63,9 @@
         </pattern>
         <linearGradient id="paint0_linear_1356_1869" x1="11.9987" y1="4.00195" x2="11.9987"
             y2="22.3158" gradientUnits="userSpaceOnUse">
+            <!-- <stop stop-color="#FF5C00" />
+            <stop offset="0.434333" stop-color="#FF375F" />
+            <stop offset="1" stop-color="#FF5C00" /> -->
             <stop stop-color="#57ADFF" />
             <stop offset="0.434333" stop-color="#57ADFF" />
             <stop offset="1" stop-color="#57ADFF" />

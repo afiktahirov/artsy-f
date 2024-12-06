@@ -64,7 +64,7 @@
 
               <el-row>
                 <el-col :sm="12">
-                  <upload-avatar />
+                  <!-- <upload-avatar /> -->
                   <el-button class="w-100" type="info" @click="submitForm">
                     {{ $t("action.save_changes") }}
                   </el-button>

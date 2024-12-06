@@ -12,9 +12,10 @@ export const actions = {
     commit('SET_LOADING', { module: 'favourites', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get(
-        '/products/wish-list', { params: { ...params, '_enables[]': 'ownerData' } }
-      )
+      const res = await this.$axios.get('/products/wish-list', { 
+        params: { ...params, '_enables[]': 'ownerData' } ,
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_DATA', { module: 'favourites', data: res.data }, { root: true })
     } catch (error) {
       commit('SET_LOADING', { module: 'favourites', loading: false }, { root: true })

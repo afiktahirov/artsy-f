@@ -30,10 +30,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchCategoriesTree({ commit,rootState }) {
+  async fetchCategoriesTree({ commit }) {
     try {
       console.log(this.$i18n.locale)
-      const res = await this.$axios.get("/categories-tree")
+      const res = await this.$axios.get("/categories-tree", {
+        headers: {
+          'X-Content-Language': this.$i18n.locale || 'ru', 
+        },
+      });
       commit('SET_CATEGORIES_TREE', res.data)
     } catch (error) {
       console.log(error)

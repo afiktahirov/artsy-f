@@ -12,7 +12,10 @@ export const actions = {
     commit('SET_LOADING', { module: 'search', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/products/search', { params })
+      const res = await this.$axios.get('/products/search', { 
+        params,
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_DATA', { module: 'search', data: res.data }, { root: true })
     } catch (error) {
       commit('SET_LOADING', { module: 'search', loading: false }, { root: true })

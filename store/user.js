@@ -33,7 +33,11 @@ export const actions = {
 
   async fetchDetails({ commit }) {
     try {
-      const res = await this.$axios.get("/auth/me")
+      const res = await this.$axios.get("/auth/me", {
+        headers : {
+          'X-Content-Language': this.$i18n.locale || 'ru', 
+        }
+      })
       commit('SET_DATA', { module: 'user', data: res.data }, { root: true })
     } catch (error) {
       console.log(error)

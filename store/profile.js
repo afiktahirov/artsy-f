@@ -60,7 +60,10 @@ export const actions = {
     commit('SET_LOADING', { module: 'profile', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/products/my', { params })
+      const res = await this.$axios.get('/products/my', { 
+        params,
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_DATA', { module: 'profile', data: res.data }, { root: true })
     } catch (error) {
       commit('SET_LOADING', { module: 'profile', loading: false }, { root: true })
@@ -71,7 +74,9 @@ export const actions = {
 
   async fetchProductDetails({ commit }, productId) {
     try {
-      const res = await this.$axios.get(`/products/my/${productId}`)
+      const res = await this.$axios.get(`/products/my/${productId}`, {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_PRODUCT_DETAILS', res.data)
     } catch (error) {
       console.log(error)
@@ -111,7 +116,9 @@ export const actions = {
   
   async fetchVipPackages({ commit }) {
     try {
-      const res = await this.$axios.get('/vip-packages')
+      const res = await this.$axios.get('/vip-packages', {
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
       commit('SET_PACKAGES', res.data)
     } catch (error) {
       console.log(error)
@@ -131,7 +138,9 @@ export const actions = {
     commit('SET_LOADING', { module: 'profile', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/my/payment-transactions', { params })
+      const res = await this.$axios.get('/my/payment-transactions', { 
+        headers : {'X-Content-Language': this.$i18n.locale || 'ru', },
+        params })
       commit('SET_TRANSACTIONS', res.data)
     } catch (error) {
       console.log(error);
