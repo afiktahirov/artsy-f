@@ -82,11 +82,11 @@ export default {
                 scheme: 'oauth2',
                 endpoints: {
                     authorization: 'https://accounts.google.com/o/oauth2/v2/auth',
-                    token: 'https://oauth2.googleapis.com/token',
-                    userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
+                    token: 'https://api.artsy.az/api/v1/auth/social/callback?driver=google',
+                    userInfo: 'https://api.artsy.az/api/v1/auth/me'
                 },
                 token: {
-                    property: 'access_token',
+                    property: 'token',
                     type: 'Bearer',
                     maxAge: 1800
                 },
