@@ -62,7 +62,8 @@ export default {
                 token: {
                     property: 'token',
                     maxAge: 60 * 60 * 24 * 7,
-                    global: true
+                    global: true,
+                    type: 'Bearer'
                 },
                 refreshToken: {
                     property: 'token',
@@ -88,9 +89,10 @@ export default {
                     userInfo: 'https://api.artsy.az/api/v1/auth/me'
                 },
                 token: {
-                    property: false,
+                    property: 'token',
                     type: 'Bearer',
-                    maxAge: 1800
+                    maxAge: 1800,
+                    global: true
                 },
                 refreshToken: false,
                 responseType: 'code',
@@ -101,11 +103,6 @@ export default {
                 codeChallengeMethod: '',
                 scope: ['openid', 'profile', 'email'],
                 redirectUri: process.env.GOOGLE_REDIRECT
-            }
-        },
-        cookie: {
-            options: {
-                maxAge: 60 * 60 * 24 * 7
             }
         },
         redirect: {

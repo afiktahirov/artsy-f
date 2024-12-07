@@ -59,19 +59,15 @@ export default {
       }
     },
   },
-  created() {
-    console.log('Home page created, checking cookies...');
-    const googleToken = Cookies.get('google_auth_token');
-    if (googleToken) {
-      this.handleGoogleCallback(googleToken);
-    }
-  },
   mounted() {
-    console.log('Home page mounted, checking cookies...');
     const googleToken = Cookies.get('google_auth_token');
+
+
     if (googleToken) {
       this.handleGoogleCallback(googleToken);
     }
+
+    // Payment status kontrolü
     if (this.$route.query.paymentStatus) {
       this.showPopup = true;
       const status = this.$route.query.paymentStatus;
@@ -92,19 +88,12 @@ export default {
     },
     async handleGoogleCallback(token) {
       try {
-        console.log('Handling Google callback with token:', token);
+        await this.$auth.strategy.token.set('Bearer ' + token);
         
-        // Token'ı auth modülüne kaydet
-        this.$auth.setToken('local', 'Bearer ' + token);
+        await this.$auth.fetchUserOnce();
         
-        console.log('Getting user info...');
-        // Kullanıcı bilgilerini al
-        await this.$auth.fetchUser();
-        
-        // Cookie'yi temizle
         Cookies.remove('google_auth_token');
         
-        console.log('Authentication completed');
       } catch (error) {
         console.error('Google callback handling error:', error);
         // Hata durumunda login sayfasına yönlendir
