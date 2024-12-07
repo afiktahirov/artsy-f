@@ -49,8 +49,9 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        // baseURL: process.env.API_BASE_URL
-        baseURL: 'http://127.0.0.1:8000/api/v1',
+        baseURL: 'https://api.artsy.az/api/v1',
+        credentials: true,
+        withCredentials: true
     },
 
     // Auth module configuration
@@ -148,8 +149,7 @@ export default {
     },
 
     publicRuntimeConfig: {
-        // baseURL: process.env.API_BASE_URL
-        baseURL: 'http://127.0.0.1:8000/api/v1'
+        baseURL: 'https://api.artsy.az/api/v1'
 
     },
 
