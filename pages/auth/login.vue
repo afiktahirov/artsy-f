@@ -96,23 +96,8 @@ export default {
     async loginWithGoogle() {
       try {
         this.pending = true;
+        // Sadece Google OAuth'ı başlat
         await this.$auth.loginWith('google');
-        
-        // Google auth callback'ten sonra cookie'yi al
-        const googleToken = Cookies.get('google_auth_token');
-        
-        if (googleToken) {
-          // Token'ı auth modülüne kaydet
-          this.$auth.setToken('local', 'Bearer ' + googleToken);
-          
-          // Kullanıcı bilgilerini al
-          await this.$auth.fetchUser();
-          
-          // Ana sayfaya yönlendir
-          this.$router.push('/');
-        } else {
-          throw new Error('Google authentication token not found');
-        }
       } catch (error) {
         console.error('Google login error:', error);
         this.$notify({
