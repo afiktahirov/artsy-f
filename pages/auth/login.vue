@@ -28,10 +28,7 @@
 
         <ul class="auth-links">
           <li class="auth-links__item">
-            <!-- <a class="auth-links__link" :href="`https://api.artsy.az/api/v1/auth/social?driver=google`">
-              <google-icon />
-            </a> -->
-            <a class="auth-links__link" @click.prevent="redirectToGoogleAuth">
+            <a class="auth-links__link" @click.prevent="loginWithGoogle">
               <google-icon />
             </a>
           </li>
@@ -95,18 +92,23 @@ export default {
         }
       })
     },
-    async redirectToGoogleAuth() {
+    async loginWithGoogle() {
       try {
-        const response = await fetch('https://api.artsy.az/api/v1/auth/social?driver=google');
-        const data = await response.json();
-
-        if (data.redirectUrl) {
-          window.location.href = data.redirectUrl;
-        } else {
-          console.error('Redirect URL not found in response.');
-        }
+        this.pending = true;
+        await this.$auth.loginWith('google', {
+          params: {
+            prompt: 'select_account'
+          }
+        });
       } catch (error) {
-        console.error('An error occurred:', error);
+        console.error('Google login error:', error);
+        this.$notify({
+          type: 'error',
+          title: 'Error',
+          message: 'Google login failed. Please try again.'
+        });
+      } finally {
+        this.pending = false;
       }
     }
   }

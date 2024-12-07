@@ -77,6 +77,30 @@ export default {
                     logout: { url: '/auth/logout', method: 'post' },
                     user: { url: '/auth/me', method: 'get' }
                 }
+            },
+            google: {
+                scheme: 'oauth2',
+                endpoints: {
+                    authorization: 'https://accounts.google.com/o/oauth2/v2/auth',
+                    token: 'https://oauth2.googleapis.com/token',
+                    userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
+                },
+                token: {
+                    property: 'access_token',
+                    type: 'Bearer',
+                    maxAge: 1800
+                },
+                refreshToken: {
+                    property: 'refresh_token',
+                    maxAge: 60 * 60 * 24 * 30
+                },
+                responseType: 'code',
+                grantType: 'authorization_code',
+                accessType: 'offline',
+                clientId: process.env.GOOGLE_CLIENT_ID,
+                codeChallengeMethod: '',
+                scope: ['openid', 'profile', 'email'],
+                state: 'UNIQUE_AND_NON_GUESSABLE'
             }
         },
         redirect: {
@@ -86,7 +110,7 @@ export default {
             home: '/'
         },
         plugins: [
-            { src: '@/plugins/auth' }
+            '@/plugins/auth'
         ]
     },
 
