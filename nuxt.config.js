@@ -76,7 +76,8 @@ export default {
                     refresh: { url: '/auth/refresh', method: 'post' },
                     logout: { url: '/auth/logout', method: 'post' },
                     user: { url: '/auth/me', method: 'get' }
-                }
+                },
+                autoLogout: false
             },
             google: {
                 scheme: 'oauth2',
@@ -86,14 +87,11 @@ export default {
                     userInfo: 'https://api.artsy.az/api/v1/auth/me'
                 },
                 token: {
-                    property: 'token',
+                    property: false,
                     type: 'Bearer',
                     maxAge: 1800
                 },
-                refreshToken: {
-                    property: 'refresh_token',
-                    maxAge: 60 * 60 * 24 * 30
-                },
+                refreshToken: false,
                 responseType: 'code',
                 grantType: 'authorization_code',
                 accessType: 'offline',
@@ -102,6 +100,11 @@ export default {
                 codeChallengeMethod: '',
                 scope: ['openid', 'profile', 'email'],
                 redirectUri: process.env.GOOGLE_REDIRECT
+            }
+        },
+        cookie: {
+            options: {
+                maxAge: 60 * 60 * 24 * 7
             }
         },
         redirect: {

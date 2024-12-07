@@ -58,6 +58,7 @@ import LockIcon from "@/components/Icons/lock.vue";
 import AppleIcon from "@/components/Icons/auth-apple.vue";
 import GoogleIcon from "@/components/Icons/auth-google.vue";
 import FacebookIcon from "@/components/Icons/auth-facebook.vue";
+import Cookies from 'js-cookie';
 
 export default {
   name: "LoginPage",
@@ -95,11 +96,23 @@ export default {
     async loginWithGoogle() {
       try {
         this.pending = true;
-        await this.$auth.loginWith('google', {
-          params: {
-            prompt: 'select_account'
-          }
-        });
+        await this.$auth.loginWith('google');
+        
+        // Google auth callback'ten sonra cookie'yi al
+        const googleToken = Cookies.get('google_auth_token');
+        
+        if (googleToken) {
+          // Token'ı auth modülüne kaydet
+          this.$auth.setToken('local', 'Bearer ' + googleToken);
+          
+          // Kullanıcı bilgilerini al
+          await this.$auth.fetchUser();
+          
+          // Ana sayfaya yönlendir
+          this.$router.push('/');
+        } else {
+          throw new Error('Google authentication token not found');
+        }
       } catch (error) {
         console.error('Google login error:', error);
         this.$notify({
