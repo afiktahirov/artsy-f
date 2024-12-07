@@ -96,8 +96,32 @@ export default {
     async loginWithGoogle() {
       try {
         this.pending = true;
-        // Sadece Google OAuth'ı başlat
+        console.log('Starting Google login...');
+        
+        // Google OAuth'ı başlat
         await this.$auth.loginWith('google');
+        
+        // Cookie'yi kontrol et
+        console.log('Checking cookies:', document.cookie);
+        const googleToken = Cookies.get('google_auth_token');
+        console.log('Google token:', googleToken);
+        
+        if (googleToken) {
+          console.log('Token found, setting it...');
+          // Token'ı auth modülüne kaydet
+          this.$auth.setToken('local', 'Bearer ' + googleToken);
+          
+          console.log('Getting user info...');
+          // Kullanıcı bilgilerini al
+          await this.$auth.fetchUser();
+          
+          console.log('Redirecting to home...');
+          // Ana sayfaya yönlendir
+          this.$router.push('/');
+        } else {
+          console.log('No token found');
+          throw new Error('Google authentication token not found');
+        }
       } catch (error) {
         console.error('Google login error:', error);
         this.$notify({

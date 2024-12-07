@@ -111,7 +111,7 @@ export default {
         redirect: {
             login: '/auth/login',
             logout: '/',
-            callback: '/auth/google/callback',
+            callback: '/auth/login',
             home: '/'
         },
         plugins: [
