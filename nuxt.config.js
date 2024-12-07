@@ -98,6 +98,7 @@ export default {
                 grantType: 'authorization_code',
                 accessType: 'offline',
                 clientId: process.env.GOOGLE_CLIENT_ID,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
                 codeChallengeMethod: '',
                 scope: ['openid', 'profile', 'email'],
                 redirectUri: process.env.GOOGLE_REDIRECT
