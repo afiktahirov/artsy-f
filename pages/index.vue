@@ -26,6 +26,7 @@ import LatestPublications from "@/components/Pages/Home/LatestPublications";
 import BrandsSlider from "@/components/Pages/Home/BrandsSlider";
 import HowItWorks from "@/components/Pages/Home/HowItWorks";
 import SecondBanners from "@/components/Pages/Home/SecondBanners";
+import Cookies from 'js-cookie';
 
 export default {
   name: "HomePage",
@@ -58,7 +59,19 @@ export default {
       }
     },
   },
+  created() {
+    console.log('Home page created, checking cookies...');
+    const googleToken = Cookies.get('google_auth_token');
+    if (googleToken) {
+      this.handleGoogleCallback(googleToken);
+    }
+  },
   mounted() {
+    console.log('Home page mounted, checking cookies...');
+    const googleToken = Cookies.get('google_auth_token');
+    if (googleToken) {
+      this.handleGoogleCallback(googleToken);
+    }
     if (this.$route.query.paymentStatus) {
       this.showPopup = true;
       const status = this.$route.query.paymentStatus;
@@ -77,6 +90,27 @@ export default {
       
       this.$router.push({ path: this.$route.path });
     },
+    async handleGoogleCallback(token) {
+      try {
+        console.log('Handling Google callback with token:', token);
+        
+        // Token'ı auth modülüne kaydet
+        this.$auth.setToken('local', 'Bearer ' + token);
+        
+        console.log('Getting user info...');
+        // Kullanıcı bilgilerini al
+        await this.$auth.fetchUser();
+        
+        // Cookie'yi temizle
+        Cookies.remove('google_auth_token');
+        
+        console.log('Authentication completed');
+      } catch (error) {
+        console.error('Google callback handling error:', error);
+        // Hata durumunda login sayfasına yönlendir
+        this.$router.push('/auth/login');
+      }
+    }
   },
   async asyncData({ store }) {
     await Promise.all([

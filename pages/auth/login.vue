@@ -55,15 +55,13 @@
 <script>
 import AuthLayout from "@/components/AuthLayout";
 import LockIcon from "@/components/Icons/lock.vue";
-import AppleIcon from "@/components/Icons/auth-apple.vue";
 import GoogleIcon from "@/components/Icons/auth-google.vue";
 import FacebookIcon from "@/components/Icons/auth-facebook.vue";
-import Cookies from 'js-cookie';
 
 export default {
   name: "LoginPage",
   layout: "auth",
-  components: { AuthLayout, LockIcon, AppleIcon, GoogleIcon, FacebookIcon },
+  components: { AuthLayout, LockIcon, GoogleIcon, FacebookIcon },
   data() {
     return {
       pending: false,
@@ -97,31 +95,7 @@ export default {
       try {
         this.pending = true;
         console.log('Starting Google login...');
-        
-        // Google OAuth'ı başlat
         await this.$auth.loginWith('google');
-        
-        // Cookie'yi kontrol et
-        console.log('Checking cookies:', document.cookie);
-        const googleToken = Cookies.get('google_auth_token');
-        console.log('Google token:', googleToken);
-        
-        if (googleToken) {
-          console.log('Token found, setting it...');
-          // Token'ı auth modülüne kaydet
-          this.$auth.setToken('local', 'Bearer ' + googleToken);
-          
-          console.log('Getting user info...');
-          // Kullanıcı bilgilerini al
-          await this.$auth.fetchUser();
-          
-          console.log('Redirecting to home...');
-          // Ana sayfaya yönlendir
-          this.$router.push('/');
-        } else {
-          console.log('No token found');
-          throw new Error('Google authentication token not found');
-        }
       } catch (error) {
         console.error('Google login error:', error);
         this.$notify({
