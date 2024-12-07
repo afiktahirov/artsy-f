@@ -100,13 +100,13 @@ export default {
                 clientId: process.env.GOOGLE_CLIENT_ID,
                 codeChallengeMethod: '',
                 scope: ['openid', 'profile', 'email'],
-                state: 'UNIQUE_AND_NON_GUESSABLE'
+                redirectUri: process.env.GOOGLE_REDIRECT
             }
         },
         redirect: {
             login: '/auth/login',
             logout: '/',
-            callback: '/auth/login',
+            callback: '/auth/google/callback',
             home: '/'
         },
         plugins: [
