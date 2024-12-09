@@ -26,7 +26,6 @@ import LatestPublications from "@/components/Pages/Home/LatestPublications";
 import BrandsSlider from "@/components/Pages/Home/BrandsSlider";
 import HowItWorks from "@/components/Pages/Home/HowItWorks";
 import SecondBanners from "@/components/Pages/Home/SecondBanners";
-import Cookies from 'js-cookie';
 
 export default {
   name: "HomePage",
@@ -60,14 +59,6 @@ export default {
     },
   },
   mounted() {
-    const googleToken = Cookies.get('google_auth_token');
-
-
-    if (googleToken) {
-      this.handleGoogleCallback(googleToken);
-    }
-
-    // Payment status kontrolü
     if (this.$route.query.paymentStatus) {
       this.showPopup = true;
       const status = this.$route.query.paymentStatus;
@@ -86,20 +77,6 @@ export default {
       
       this.$router.push({ path: this.$route.path });
     },
-    async handleGoogleCallback(token) {
-      try {
-        await this.$auth.strategy.token.set('Bearer ' + token);
-        
-        await this.$auth.fetchUserOnce();
-        
-        Cookies.remove('google_auth_token');
-        
-      } catch (error) {
-        console.error('Google callback handling error:', error);
-        // Hata durumunda login sayfasına yönlendir
-        this.$router.push('/auth/login');
-      }
-    }
   },
   async asyncData({ store }) {
     await Promise.all([

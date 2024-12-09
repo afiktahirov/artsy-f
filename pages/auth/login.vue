@@ -28,7 +28,10 @@
 
         <ul class="auth-links">
           <li class="auth-links__item">
-            <a class="auth-links__link" @click.prevent="loginWithGoogle">
+            <!-- <a class="auth-links__link" :href="`https://api.artsy.az/api/v1/auth/social?driver=google`">
+              <google-icon />
+            </a> -->
+            <a class="auth-links__link" @click.prevent="redirectToGoogleAuth">
               <google-icon />
             </a>
           </li>
@@ -55,13 +58,14 @@
 <script>
 import AuthLayout from "@/components/AuthLayout";
 import LockIcon from "@/components/Icons/lock.vue";
+import AppleIcon from "@/components/Icons/auth-apple.vue";
 import GoogleIcon from "@/components/Icons/auth-google.vue";
 import FacebookIcon from "@/components/Icons/auth-facebook.vue";
 
 export default {
   name: "LoginPage",
   layout: "auth",
-  components: { AuthLayout, LockIcon, GoogleIcon, FacebookIcon },
+  components: { AuthLayout, LockIcon, AppleIcon, GoogleIcon, FacebookIcon },
   data() {
     return {
       pending: false,
@@ -91,20 +95,18 @@ export default {
         }
       })
     },
-    async loginWithGoogle() {
+    async redirectToGoogleAuth() {
       try {
-        this.pending = true;
-        console.log('Starting Google login...');
-        await this.$auth.loginWith('google');
+        const response = await fetch('https://api.artsy.az/api/v1/auth/social?driver=google');
+        const data = await response.json();
+
+        if (data.redirectUrl) {
+          window.location.href = data.redirectUrl;
+        } else {
+          console.error('Redirect URL not found in response.');
+        }
       } catch (error) {
-        console.error('Google login error:', error);
-        this.$notify({
-          type: 'error',
-          title: 'Error',
-          message: 'Google login failed. Please try again.'
-        });
-      } finally {
-        this.pending = false;
+        console.error('An error occurred:', error);
       }
     }
   }

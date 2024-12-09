@@ -49,9 +49,8 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        baseURL: 'https://api.artsy.az/api/v1',
-        credentials: true,
-        withCredentials: true
+        // baseURL: process.env.API_BASE_URL
+        baseURL: 'http://127.0.0.1:8000/api/v1',
     },
 
     // Auth module configuration
@@ -62,8 +61,7 @@ export default {
                 token: {
                     property: 'token',
                     maxAge: 60 * 60 * 24 * 7,
-                    global: true,
-                    type: 'Bearer'
+                    global: true
                 },
                 refreshToken: {
                     property: 'token',
@@ -78,31 +76,7 @@ export default {
                     refresh: { url: '/auth/refresh', method: 'post' },
                     logout: { url: '/auth/logout', method: 'post' },
                     user: { url: '/auth/me', method: 'get' }
-                },
-                autoLogout: false
-            },
-            google: {
-                scheme: 'oauth2',
-                endpoints: {
-                    authorization: 'https://accounts.google.com/o/oauth2/v2/auth',
-                    token: 'https://api.artsy.az/api/v1/auth/social/callback?driver=google',
-                    userInfo: 'https://api.artsy.az/api/v1/auth/me'
-                },
-                token: {
-                    property: 'token',
-                    type: 'Bearer',
-                    maxAge: 1800,
-                    global: true
-                },
-                refreshToken: false,
-                responseType: 'code',
-                grantType: 'authorization_code',
-                accessType: 'offline',
-                clientId: process.env.GOOGLE_CLIENT_ID,
-                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-                codeChallengeMethod: '',
-                scope: ['openid', 'profile', 'email'],
-                redirectUri: process.env.GOOGLE_REDIRECT
+                }
             }
         },
         redirect: {
@@ -112,7 +86,7 @@ export default {
             home: '/'
         },
         plugins: [
-            '@/plugins/auth'
+            { src: '@/plugins/auth' }
         ]
     },
 
@@ -146,7 +120,8 @@ export default {
     },
 
     publicRuntimeConfig: {
-        baseURL: 'https://api.artsy.az/api/v1'
+        // baseURL: process.env.API_BASE_URL
+        baseURL: 'http://127.0.0.1:8000/api/v1'
 
     },
 
