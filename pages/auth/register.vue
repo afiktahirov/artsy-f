@@ -26,7 +26,7 @@
           </el-button>
         </el-form>
 
-        <el-divider>{{ $t("auth.or_continue_with") }}</el-divider>
+        <!-- <el-divider>{{ $t("auth.or_continue_with") }}</el-divider>
 
         <ul class="auth-links">
           <li class="auth-links__item">
@@ -39,7 +39,7 @@
               <facebook-icon />
             </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </template>
 

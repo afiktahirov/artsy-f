@@ -6,15 +6,15 @@
       <div class="container">
         <profile-nav />
 
-        <el-row :gutter="20">
+        <!-- <el-row :gutter="20">
           <el-col :span="24">
             <block-title>{{ $t("profile.connected_accounts") }}</block-title>
           </el-col>
-          <!-- <el-col :md="8" :sm="12">
+          <el-col :md="8" :sm="12">
             <social-chip :label="$t('social_chip.connect_with', { type: 'Apple' })" social-type="apple" :attached="$auth.user.has_apple">
               <apple-icon slot="icon" />
             </social-chip>
-          </el-col> -->
+          </el-col>
           <el-col :sm="12">
             <social-chip :label="$t('social_chip.connect_with', { type: 'Google' })" social-type="google" :attached="$auth.user.has_google">
               <google-icon slot="icon" />
@@ -25,7 +25,7 @@
               <facebook-icon slot="icon" />
             </social-chip>
           </el-col>
-        </el-row>
+        </el-row> -->
 
         <el-divider />
 

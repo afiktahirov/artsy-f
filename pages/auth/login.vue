@@ -24,13 +24,13 @@
           </el-button>
         </el-form>
 
-        <el-divider>{{ $t("auth.or_continue_with") }}</el-divider>
+        <!-- <el-divider>{{ $t("auth.or_continue_with") }}</el-divider> -->
 
-        <ul class="auth-links">
+        <!-- <ul class="auth-links">
           <li class="auth-links__item">
-            <!-- <a class="auth-links__link" :href="`https://api.artsy.az/api/v1/auth/social?driver=google`">
+            <a class="auth-links__link" :href="`https://api.artsy.az/api/v1/auth/social?driver=google`">
               <google-icon />
-            </a> -->
+            </a>
             <a class="auth-links__link" @click.prevent="redirectToGoogleAuth">
               <google-icon />
             </a>
@@ -40,7 +40,7 @@
               <facebook-icon />
             </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </template>
 
@@ -95,20 +95,20 @@ export default {
         }
       })
     },
-    async redirectToGoogleAuth() {
-      try {
-        const response = await fetch('https://api.artsy.az/api/v1/auth/social?driver=google');
-        const data = await response.json();
+    // async redirectToGoogleAuth() {
+    //   try {
+    //     const response = await fetch('https://api.artsy.az/api/v1/auth/social?driver=google');
+    //     const data = await response.json();
 
-        if (data.redirectUrl) {
-          window.location.href = data.redirectUrl;
-        } else {
-          console.error('Redirect URL not found in response.');
-        }
-      } catch (error) {
-        console.error('An error occurred:', error);
-      }
-    }
+    //     if (data.redirectUrl) {
+    //       window.location.href = data.redirectUrl;
+    //     } else {
+    //       console.error('Redirect URL not found in response.');
+    //     }
+    //   } catch (error) {
+    //     console.error('An error occurred:', error);
+    //   }
+    // }
   }
 }
 </script>
