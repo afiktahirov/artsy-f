@@ -94,8 +94,8 @@ export default {
 <style>
 #product_tags_row {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  padding: 0 60px;
 }
 
 #product_tags_row>div {

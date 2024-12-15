@@ -15,6 +15,13 @@
             <el-col :lg="14">
               <product-details :details="details" />
             </el-col>
+            <el-col v-if="details.tags && details.tags.length > 0" :lg="24">
+              <div id="product_tags_row">
+                <div v-for="tag in details.tags">
+                  {{ '# ' + tag }}
+                </div>
+              </div>
+            </el-col>
           </el-row>
         </div>
 
@@ -51,6 +58,10 @@ export default {
       return this.details.category || {}
     }
   },
+  mounted() {
+    console.log(this.details)
+  },
+
   async asyncData({ store, params }) {
     await Promise.all([
       store.dispatch("products/fetchProductDetails", params.id),
@@ -60,3 +71,19 @@ export default {
   }
 }
 </script>
+
+<style>
+#product_tags_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#product_tags_row>div {
+  border-radius: 50px;
+  border: 1px solid #77BDCA;
+  padding: 12px 21px;
+  font-size: 14px;
+  font-weight: 500;
+}
+</style>
