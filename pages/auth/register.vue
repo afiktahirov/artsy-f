@@ -16,7 +16,7 @@
             <el-input type="email" v-model="form.email" :placeholder="$t('placeholder.email')" />
           </el-form-item>
           <el-form-item prop="phone">
-            <el-input v-model="form.phone" v-mask="'+994 ### ## ##'" :placeholder="$t('placeholder.phone_number')" />
+            <el-input v-model="form.phone" v-mask="'+994 ## ### ## ##'" :placeholder="$t('placeholder.phone_number')" />
           </el-form-item>
           <el-form-item prop="password">
             <el-input type="password" v-model="form.password" :placeholder="$t('placeholder.password')" show-password />
