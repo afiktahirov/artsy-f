@@ -3,17 +3,19 @@ export const state = () => ({
   asyncData: {},
   filters: {
     categories: [],
-    attributes: []
+    attributes: [],
+    tags: []
   },
   recentlyViewed: [],
   productDetails: {},
   productReviews: {},
-  tag_ids : []
+  tag_ids: []
 })
 
 export const getters = {
   getProducts: (state) => state.asyncData.data || [],
   getFilterCategories: (state) => state.filters.categories.data || [],
+  getFilterTags: (state) => state.filters.tags || [],
   getFilterAttributes: (state) => state.filters.attributes.data || [],
   getRecentlyViewed: (state) => state.recentlyViewed.data || [],
   getProductDetails: (state) => state.productDetails.data || {},
@@ -24,6 +26,10 @@ export const getters = {
 export const mutations = {
   SET_FILTER_CATEGORIES(state, data) {
     state.filters.categories = data;
+  },
+
+  SET_FILTER_TAGS(state, data) {
+    state.filters.tags = data;
   },
 
   SET_FILTER_ATTRIBUTES(state, data) {
@@ -52,9 +58,9 @@ export const actions = {
     commit('SET_LOADING', { module: 'products', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/products', { 
+      const res = await this.$axios.get('/products', {
         params,
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_DATA', { module: 'products', data: res.data }, { root: true })
       commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
@@ -66,9 +72,36 @@ export const actions = {
   async fetchTags({ commit }) {
     try {
       const res = await this.$axios.get('/tags', {
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_TAG_IDS', res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async fetchTagsByTagId({ commit }, tagids) {
+    let tagId = null;
+    if (Array.isArray(tagids)) {
+      tagId = tagids[0]
+    } else {
+      tagId = tagids
+    }
+
+    try {
+      const res = await this.$axios.get(`/tag/${tagId}`, {
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
+
+      res.data = res.data.map(product => {
+        if (product.images) {
+          product.images = product.images.map(image =>
+            `http://api.artsy.az/${image}`
+          );
+        }
+        return product;
+      });
+      commit('SET_FILTER_TAGS', res.data)
     } catch (error) {
       console.log(error)
     }
@@ -85,7 +118,7 @@ export const actions = {
 
     try {
       const res = await this.$axios.get(`/categories/${categoryId}`, {
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_FILTER_CATEGORIES', res.data)
     } catch (error) {
@@ -93,13 +126,28 @@ export const actions = {
     }
   },
 
+  async fetchAttributesByTagIds({ commit }, params) {
+    commit('SET_LOADING', { module: 'products', loading: true }, { root: true })
+
+    try {
+      const res = await this.$axios.get('/attributes', {
+        params,
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
+      commit('SET_FILTER_ATTRIBUTES', res.data)
+      commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
+    } catch (error) {
+      commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
+    }
+  },
+
   async fetchAttributesByCategoryIds({ commit }, params) {
     commit('SET_LOADING', { module: 'products', loading: true }, { root: true })
 
     try {
-      const res = await this.$axios.get('/attributes', { 
+      const res = await this.$axios.get('/attributes', {
         params,
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_FILTER_ATTRIBUTES', res.data)
       commit('SET_LOADING', { module: 'products', loading: false }, { root: true })
@@ -111,7 +159,7 @@ export const actions = {
   async fetchRecentlyViewed({ commit }) {
     try {
       const res = await this.$axios.get('/products/recent-viewed', {
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_RECENTLY_VIEWED', res.data)
     } catch (error) {
@@ -122,7 +170,7 @@ export const actions = {
   async fetchProductDetails({ commit }, productId) {
     try {
       const res = await this.$axios.get(`/products/${productId}`, {
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_PRODUCT_DETAILS', res.data)
     } catch (error) {
@@ -135,7 +183,7 @@ export const actions = {
 
     try {
       const res = await this.$axios.get(`/products/${id}/reviews?perPage=${perPage}`, {
-        headers : {'X-Content-Language': this.$i18n.locale || 'ru', }
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_PRODUCT_REVIEWS', res.data)
     } catch (error) {

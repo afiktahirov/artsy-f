@@ -27,7 +27,14 @@
 
     <div class="product-card__image">
       <nuxt-link :to="$localePath('products-id', { id: product.id })">
-        <el-image :src="product.image" :alt="product.title" fit="cover" />
+
+        <template v-if="product.images">
+          <el-image :src="product.images[0]" alt="image" fit="cover" />
+        </template>
+
+        <template v-else>
+          <el-image :src="product.image" :alt="product.title" fit="cover" />
+        </template>
       </nuxt-link>
     </div>
 
