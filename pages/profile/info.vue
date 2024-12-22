@@ -27,7 +27,7 @@
                 <el-col :sm="12">
                   <el-form-item prop="phone">
                     <floating-label :value="form.phone" :label="$t('placeholder.phone_number')">
-                      <el-input v-model="form.phone" v-mask="'(###)-###-##-##'" />
+                      <el-input v-model="form.phone" v-mask="'+994-##-###-##-##'" />
                     </floating-label>
                   </el-form-item>
                 </el-col>
