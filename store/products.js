@@ -9,7 +9,8 @@ export const state = () => ({
   recentlyViewed: [],
   productDetails: {},
   productReviews: {},
-  tag_ids: []
+  tag_ids: [],
+  tag : {}
 })
 
 export const getters = {
@@ -20,7 +21,8 @@ export const getters = {
   getRecentlyViewed: (state) => state.recentlyViewed.data || [],
   getProductDetails: (state) => state.productDetails.data || {},
   getProductReviews: (state) => state.productReviews.data || [],
-  getTagIds: (state) => state.tag_ids.data || []
+  getTagIds: (state) => state.tag_ids.data || [],
+  getTag: (state) => state.tag || []
 }
 
 export const mutations = {
@@ -50,6 +52,10 @@ export const mutations = {
 
   SET_TAG_IDS(state, data) {
     state.tag_ids = data;
+  },
+
+  SET_TAG(state, data) {
+    state.tag = data;
   }
 }
 
@@ -75,6 +81,17 @@ export const actions = {
         headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
       })
       commit('SET_TAG_IDS', res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async fetchTag({ commit }, id) {
+    try {
+      const res = await this.$axios.get(`/tag/getTitle/${id}`, {
+        headers: { 'X-Content-Language': this.$i18n.locale || 'ru', }
+      })
+      commit('SET_TAG', res.data)
     } catch (error) {
       console.log(error)
     }

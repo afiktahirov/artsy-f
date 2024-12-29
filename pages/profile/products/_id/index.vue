@@ -24,7 +24,7 @@
             <el-col v-if="details.tags && details.tags.length > 0" :lg="24">
               <div id="product_tags_row">
                 <div v-for="tag in details.tags">
-                  {{ '# ' + tag }}
+                  <nuxt-link :to="$localePath('tag-id-products', { id: tag.id })">{{ '# ' + tag.title }}</nuxt-link>
                 </div>
               </div>
             </el-col>

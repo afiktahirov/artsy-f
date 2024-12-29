@@ -46,7 +46,7 @@
             </el-form-item>
           </el-col>
 
-          <el-col :sm="12" v-for="(attr, index) in attributes" :key="attr.id">
+          <!-- <el-col :sm="12" v-for="(attr, index) in attributes" :key="attr.id">
             <el-form-item prop="attributes">
               <floating-label :value="form.attributes.get(index)" :label="attr.title">
                 <el-select :value="form.attributes.get(index)" @change="handleAttributeChange($event, index)"
@@ -55,7 +55,7 @@
                 </el-select>
               </floating-label>
             </el-form-item>
-          </el-col>
+          </el-col> -->
 
           <el-col :sm="24">
             <el-divider class="mt-4 mb-8" />

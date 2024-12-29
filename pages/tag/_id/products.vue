@@ -1,33 +1,33 @@
 <template>
-    <!-- <page-header :title="categories.title">
-        <breadcrumbs :items="categories" />
-    </page-header> -->
-    <div class="page-body">
-        <div class="container">
+    <div>
+        <page-header :title="tags[0]">
+            <breadcrumbs :items="tags" />
+        </page-header>
+        <div class="page-body">
+            <div class="container">
 
-            <el-row :gutter="20">
+                <el-row :gutter="20">
 
-                <el-col :span="24" :xl="18">
-                    <template v-if="!products.length">
-                        <el-empty :description="$t('placeholder.no_data_to_show')" />
-                    </template>
-                    <template v-else>
-                        <enhanced-row type="flex" :gutter="20">
-                            <template v-for="product in products">
-                                <el-col :xl="8" :lg="6" :md="8" :span="12" :key="product.id">
-                                    <product-card :product="product" />
-                                </el-col>
-                            </template>
-                        </enhanced-row>
-                    </template>
+                    <el-col :span="24" :xl="18">
+                        <template v-if="!products.length">
+                            <el-empty :description="$t('placeholder.no_data_to_show')" />
+                        </template>
 
-                    <!-- <pagination :total="pagination.total" v-if="pagination.total > 15" @page-change="handlePageChange"
-                        @size-change="handleSizeChange" :current-page="pagination.current_page" /> -->
-                </el-col>
-                <!-- col (products) -->
-            </el-row>
+                        <template v-else>
+                            <enhanced-row type="flex" :gutter="20">
+                                <template v-for="product in products">
+                                    <el-col :xl="8" :lg="6" :md="8" :span="12" :key="product.id">
+                                        <product-card :product="product" />
+                                    </el-col>
+                                </template>
+                            </enhanced-row>
+                        </template>
+                    </el-col>
+                    <!-- col (products) -->
+                </el-row>
 
-            <recently-viewed />
+                <recently-viewed />
+            </div>
         </div>
     </div>
 </template>
@@ -72,18 +72,19 @@ export default {
             pagination: ({ products }) => products.asyncData.meta
         }),
         ...mapGetters({
-            tags: "",
+            tags: "products/getTag",
             products: "products/getFilterTags"
         })
     },
     mounted() {
-        console.log(this.products)
+        console.log(this.tags)
     },
     watch: {
         "$route.query"(query) {
             const paramsId = this.$route.params.id;
 
             Promise.all([
+                this.$store.dispatch("products/fetchTag", params.id),
                 this.$store.dispatch("products/fetchTagsByTagId", paramsId),
             ]).then(() => {
                 this.$scrollTo("#root");
@@ -104,6 +105,7 @@ export default {
     },
     async asyncData({ store, query, params }) {
         await Promise.all([
+            store.dispatch("products/fetchTag", params.id),
             store.dispatch("products/fetchRecentlyViewed"),
             store.dispatch("products/fetchTagsByTagId", params.id),
         ])
