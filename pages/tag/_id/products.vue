@@ -1,6 +1,6 @@
 <template>
     <div>
-        <page-header :title="tags[0]">
+        <page-header :title="tags.title">
             <breadcrumbs :items="tags" />
         </page-header>
         <div class="page-body">

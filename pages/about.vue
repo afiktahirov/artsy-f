@@ -43,7 +43,7 @@
 <script>
 import { mapState } from "vuex";
 import PageHeader from "@/components/PageHeader";
-import StaticNav from "@/components/Pages/Static/Nav";
+import StaticNav from "@/components/Pages/Static/Nav/index.vue";
 import EditorBody from "@/components/EditorBody";
 
 export default {
@@ -56,6 +56,9 @@ export default {
   },
   async asyncData({ store }) {
     await store.dispatch("pages/fetchHowItWorks")
+  },
+  mounted(){
+    console.log(this.data)
   }
 }
 </script>
